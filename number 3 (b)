@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double balance, units, total_cost = 0;
+
+    cout << "Enter balance and water units consumed: ";
+    cin >> balance >> units;
+
+    if (units <= 10) {
+        total_cost = units * 150;
+    } else if (units <= 20) {
+        total_cost = (10 * 150) + (units - 10) * 175;
+    } else {
+        total_cost = (10 * 150) + (10 * 175) + (units - 20) * 200;
+    }
+
+    total_cost += total_cost * 0.15;  // 15% surcharge
+    double VAT = total_cost * 0.18;  // 18% VAT
+    total_cost += VAT;
+
+    if (balance >= total_cost) {
+        balance -= total_cost;
+        cout << "Transaction successful. Remaining balance: " << balance << endl;
+    } else {
+        cout << "Insufficient balance. Remaining balance: " << balance << endl;
+    }
+
+    return 0;
+}
+
